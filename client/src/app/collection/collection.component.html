@@ -1,0 +1,8 @@
+<h1> User List and Info </h1>
+<app-user
+  *ngFor='let userObject of userList'
+  [user]="userObject">
+</app-user>
+<app-newuser>
+  (newUser)="updateUserList()"
+</app-newuser>

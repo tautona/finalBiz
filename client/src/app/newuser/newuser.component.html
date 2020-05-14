@@ -1,0 +1,27 @@
+<div>
+  <h3> Add a User </h3>
+  <form #newuserForm="ngForm" (ngSubmit)="save(newuserForm)">
+    <div>
+      <label> User:
+        <input required minlength="3" #username="ngModel" placeholder="username" name = "username" class="form-control"  [(ngModel)]="user.username">
+      </label>
+      <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+        <div *ngIf="username.errors.minlength">
+          Username must be at least three characters long .
+        </div>
+        <div *ngIf="username.errors.required">
+          Username is required.
+        </div>
+      </div>
+
+
+      <label> First Unit Score:
+        <input placeholder="firstUnit" name = "firstUnit" class="form-control" [(ngModel)]="user.firstUnit">
+      </label>
+      <label> Second Unit Score:
+        <input placeholder="secondUnit" name = "secondUnit" class="form-control" [(ngModel)]="user.secondUnit">
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!newuserForm.valid">save</button>
+    </form>
+    </div>

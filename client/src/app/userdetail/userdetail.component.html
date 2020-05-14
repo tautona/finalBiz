@@ -1,0 +1,30 @@
+<div *ngIf="user">
+  <div *ngIf="!editing">
+    <h3> {{ user.username }} Details: </h3>
+    <div ><span> Name: </span> {{ user.username }}</div>
+    <div ><span> First Unit: </span> {{ user.firstUnit }}</div>
+    <div ><span> Second Unit: </span> {{ user.secondUnit }}</div>
+    <button class="btn btn-link" (click)="setEditMode(true)">edit</button>
+    <a class="btn btn-link" href="/#/">return to list</a>
+  </div>
+</div>
+<div>
+  <div *ngIf="editing">
+  <form #form="ngForm" (ngSubmit)="updateUser(form.value)">
+  <div class="form-group">
+    <label for="usernameField">User: </label>
+    <input #username id="usernameField" name="usernameField" class="form-control" [ngModel]="user.username">
+    {{ username.value }}
+    <br/>
+    <label for="firstunitField">User: </label>
+    <input id="firstunitField" name="firstunitField" class="form-control" [ngModel]="user.firstUnit">
+    <br />
+    <label for="secondunitField">User: </label>
+    <input id="secondunitField" name="secondunitField" class="form-control" [ngModel]="user.secondUnit">
+  </div>
+  <button type="submit">update</button>
+  <button type="button" (click)="setEditMode(false)">cancel</button>
+  <button type="button" (click)="deleteUser()">Remove this User</button>
+  </form>
+  </div>
+  </div>
